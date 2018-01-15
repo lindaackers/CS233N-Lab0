@@ -75,7 +75,7 @@ namespace Memory
         // This method fills each picture box with a filename
         private void FillCardFilenames()
         {
-            string[] values = { "a", "2", "j", "q", "k" };
+            string[] values = { "a", "8", "j", "q", "3" };
             string[] suits = { "c", "d", "h", "s" };
             int i = 1;
 
@@ -92,6 +92,7 @@ namespace Memory
         // TODO:  students should write this one
         private void ShuffleCards()
         {
+            
         }
 
         // This method loads (shows) an image in a picture box.  Assumes that filenames
@@ -113,7 +114,11 @@ namespace Memory
         // shows (loads) the backs of all of the cards
         private void LoadAllCardBacks()
         {
-
+            for (int i = 1; i <= 20; i++)
+            {
+                LoadCardBack(i);
+            }
+            
         }
 
         // Hides a picture box
@@ -135,7 +140,11 @@ namespace Memory
 
         private void ShowAllCards()
         {
-
+            
+            for (int i = 1; i <= 20; i++)
+            {
+                LoadCard(i);
+            }
         }
 
         // disables a picture box
@@ -177,6 +186,8 @@ namespace Memory
              *      to make sure that the cards are loaded successfully and that
              *      they're shuffled.  If you get all 2s, something is wrong.
             */
+            //LoadAllCardBacks();
+            
         }
 
         private void card_Click(object sender, EventArgs e)
@@ -223,5 +234,13 @@ namespace Memory
              */
         }
         #endregion
+
+        private void start_Game(object sender, EventArgs e)
+        {
+            //LoadAllCardBacks();
+            FillCardFilenames();
+            ShowAllCards();
+            
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace Memory
         public boardForm()
         {
             InitializeComponent();
+            LoadAllCardBacks();
         }
 
         #region Instance Variables
@@ -76,23 +77,27 @@ namespace Memory
         private void FillCardFilenames()
         {
             string[] values = { "a", "8", "j", "q", "3" };
+            Random rnd = new Random();
+            string[] MyRandomValues = values.OrderBy(x => rnd.Next()).ToArray();
             string[] suits = { "c", "d", "h", "s" };
+            // call ShuffleCards, sending values array
+            
             int i = 1;
 
             for (int suit = 0; suit <= 3; suit++)
             {
                 for (int value = 0; value <= 4; value++)
                 {
-                    SetCardFilename(i, "card" + values[value] + suits[suit] + ".jpg");
+                    SetCardFilename(i, "card" + MyRandomValues[value] + suits[suit] + ".jpg");
                     i++;
                 }
             }
         }
 
         // TODO:  students should write this one
-        private void ShuffleCards()
+        private void ShuffleCards(string[] values) //array passed by reference
         {
-            
+            //unable to write method!  Pass arrray as reference how?
         }
 
         // This method loads (shows) an image in a picture box.  Assumes that filenames
@@ -135,7 +140,8 @@ namespace Memory
         // shows a picture box
         private void ShowCard(int i)
         {
-
+            //working on
+            LoadCard(i);
         }
 
         private void ShowAllCards()
@@ -194,6 +200,7 @@ namespace Memory
         {
             PictureBox card = (PictureBox)sender;
             int cardNumber = int.Parse(card.Name.Substring(4));
+            ShowCard(cardNumber);
 
             /* 
              * if the first card isn't picked yet
@@ -237,9 +244,8 @@ namespace Memory
 
         private void start_Game(object sender, EventArgs e)
         {
-            //LoadAllCardBacks();
             FillCardFilenames();
-            ShowAllCards();
+            //ShowAllCards();
             
         }
     }

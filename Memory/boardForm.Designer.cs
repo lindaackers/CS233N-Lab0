@@ -45,13 +45,13 @@
             this.card15 = new System.Windows.Forms.PictureBox();
             this.card14 = new System.Windows.Forms.PictureBox();
             this.card6 = new System.Windows.Forms.PictureBox();
+            this.flipTimer = new System.Windows.Forms.Timer(this.components);
+            this.startButton = new System.Windows.Forms.Button();
             this.card5 = new System.Windows.Forms.PictureBox();
             this.card4 = new System.Windows.Forms.PictureBox();
             this.card3 = new System.Windows.Forms.PictureBox();
             this.card2 = new System.Windows.Forms.PictureBox();
             this.card1 = new System.Windows.Forms.PictureBox();
-            this.flipTimer = new System.Windows.Forms.Timer(this.components);
-            this.startButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.card13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card12)).BeginInit();
@@ -239,6 +239,21 @@
             this.card6.TabStop = false;
             this.card6.Click += new System.EventHandler(this.card_Click);
             // 
+            // flipTimer
+            // 
+            this.flipTimer.Interval = 2000;
+            this.flipTimer.Tick += new System.EventHandler(this.flipTimer_Tick);
+            // 
+            // startButton
+            // 
+            this.startButton.Location = new System.Drawing.Point(746, 290);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(205, 97);
+            this.startButton.TabIndex = 69;
+            this.startButton.Text = "Start Game";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.start_Game);
+            // 
             // card5
             // 
             this.card5.Image = ((System.Drawing.Image)(resources.GetObject("card5.Image")));
@@ -294,21 +309,6 @@
             this.card1.TabStop = false;
             this.card1.Click += new System.EventHandler(this.card_Click);
             // 
-            // flipTimer
-            // 
-            this.flipTimer.Interval = 2000;
-            this.flipTimer.Tick += new System.EventHandler(this.flipTimer_Tick);
-            // 
-            // startButton
-            // 
-            this.startButton.Location = new System.Drawing.Point(746, 290);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(205, 97);
-            this.startButton.TabIndex = 69;
-            this.startButton.Text = "Start Game";
-            this.startButton.UseVisualStyleBackColor = true;
-            this.startButton.Click += new System.EventHandler(this.start_Game);
-            // 
             // boardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -335,7 +335,7 @@
             this.Controls.Add(this.card3);
             this.Controls.Add(this.card2);
             this.Controls.Add(this.card1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "boardForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.boardForm_Load);
@@ -380,13 +380,13 @@
         private System.Windows.Forms.PictureBox card15;
         private System.Windows.Forms.PictureBox card14;
         private System.Windows.Forms.PictureBox card6;
+        private System.Windows.Forms.Timer flipTimer;
+        private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.PictureBox card5;
         private System.Windows.Forms.PictureBox card4;
         private System.Windows.Forms.PictureBox card3;
         private System.Windows.Forms.PictureBox card2;
         private System.Windows.Forms.PictureBox card1;
-        private System.Windows.Forms.Timer flipTimer;
-        private System.Windows.Forms.Button startButton;
     }
 }
 

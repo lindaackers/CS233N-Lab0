@@ -76,37 +76,33 @@ namespace Memory
         // This method fills each picture box with a filename
         private void FillCardFilenames()
         {
-            //string[] values = { "a", "8", "j", "q", "3" }; //Works
-            //Random rnd = new Random();
-            //string[] MyRandomValues = values.OrderBy(x => rnd.Next()).ToArray();
-            //Do using ShuffleCards
-            string[] myrandomvalues = new string[50];
-            for (int count = 0; count <= 4; count++)
-            {
-                string randomvalue=ShuffleCards();
-                myrandomvalues[count] = randomvalue;
-            }
+            string[] values = { "a", "2", "3", "4", "5", "6", "7", "j", "q", "k" }; 
+            string[] card_values_copy = ShuffleCards(values);
             string[] suits = { "c", "d", "h", "s" };
-            // call ShuffleCards, sending values array
-            
+            // call ShuffleCards, sending values array           
             int i = 1;
 
-            for (int suit = 0; suit <= 3; suit++)
+            for (int suit = 0; suit <= 3; suit++) 
             {
                 for (int value = 0; value <= 4; value++)
-                {
-                    SetCardFilename(i, "card" + myrandomvalues[value] + suits[suit] + ".jpg");
+                    {                
+                    SetCardFilename(i, "card" + card_values_copy[value] + suits[suit] + ".jpg");
                     i++;
                 }
             }
         }
 
         // TODO:  students should write this one
-        private string ShuffleCards() //array passed by reference instead?
+        static string[] ShuffleCards(string[] array) //how do you write so you call only once? See ArrayTests.cs
         {
-            string card_value = "q";
-            string random_value = card_value;
-            return random_value;
+            Random rnd = new Random();
+            string[] MyRandomValues = array.OrderBy(x => rnd.Next()).ToArray();
+            foreach (var card_value in MyRandomValues)
+            {
+                Console.WriteLine(card_value);
+                Console.ReadLine();
+            }
+            return MyRandomValues;
         }
 
         // This method loads (shows) an image in a picture box.  Assumes that filenames

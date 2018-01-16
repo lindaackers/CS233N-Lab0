@@ -76,9 +76,16 @@ namespace Memory
         // This method fills each picture box with a filename
         private void FillCardFilenames()
         {
-            string[] values = { "a", "8", "j", "q", "3" };
-            Random rnd = new Random();
-            string[] MyRandomValues = values.OrderBy(x => rnd.Next()).ToArray();
+            //string[] values = { "a", "8", "j", "q", "3" }; //Works
+            //Random rnd = new Random();
+            //string[] MyRandomValues = values.OrderBy(x => rnd.Next()).ToArray();
+            //Do using ShuffleCards
+            string[] myrandomvalues = new string[50];
+            for (int count = 0; count <= 4; count++)
+            {
+                string randomvalue=ShuffleCards();
+                myrandomvalues[count] = randomvalue;
+            }
             string[] suits = { "c", "d", "h", "s" };
             // call ShuffleCards, sending values array
             
@@ -88,16 +95,18 @@ namespace Memory
             {
                 for (int value = 0; value <= 4; value++)
                 {
-                    SetCardFilename(i, "card" + MyRandomValues[value] + suits[suit] + ".jpg");
+                    SetCardFilename(i, "card" + myrandomvalues[value] + suits[suit] + ".jpg");
                     i++;
                 }
             }
         }
 
         // TODO:  students should write this one
-        private void ShuffleCards(string[] values) //array passed by reference
+        private string ShuffleCards() //array passed by reference instead?
         {
-            //unable to write method!  Pass arrray as reference how?
+            string card_value = "q";
+            string random_value = card_value;
+            return random_value;
         }
 
         // This method loads (shows) an image in a picture box.  Assumes that filenames

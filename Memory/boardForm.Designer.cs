@@ -46,7 +46,6 @@
             this.card14 = new System.Windows.Forms.PictureBox();
             this.card6 = new System.Windows.Forms.PictureBox();
             this.flipTimer = new System.Windows.Forms.Timer(this.components);
-            this.startButton = new System.Windows.Forms.Button();
             this.card5 = new System.Windows.Forms.PictureBox();
             this.card4 = new System.Windows.Forms.PictureBox();
             this.card3 = new System.Windows.Forms.PictureBox();
@@ -244,16 +243,6 @@
             this.flipTimer.Interval = 2000;
             this.flipTimer.Tick += new System.EventHandler(this.flipTimer_Tick);
             // 
-            // startButton
-            // 
-            this.startButton.Location = new System.Drawing.Point(746, 290);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(205, 97);
-            this.startButton.TabIndex = 69;
-            this.startButton.Text = "Start Game";
-            this.startButton.UseVisualStyleBackColor = true;
-            this.startButton.Click += new System.EventHandler(this.start_Game);
-            // 
             // card5
             // 
             this.card5.Image = ((System.Drawing.Image)(resources.GetObject("card5.Image")));
@@ -314,7 +303,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 706);
-            this.Controls.Add(this.startButton);
             this.Controls.Add(this.card13);
             this.Controls.Add(this.card20);
             this.Controls.Add(this.card12);
@@ -381,7 +369,6 @@
         private System.Windows.Forms.PictureBox card14;
         private System.Windows.Forms.PictureBox card6;
         private System.Windows.Forms.Timer flipTimer;
-        private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.PictureBox card5;
         private System.Windows.Forms.PictureBox card4;
         private System.Windows.Forms.PictureBox card3;

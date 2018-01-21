@@ -16,7 +16,6 @@ namespace Memory
         public boardForm()
         {
             InitializeComponent();
-            LoadAllCardBacks();
         }
 
         #region Instance Variables
@@ -76,17 +75,23 @@ namespace Memory
         // This method fills each picture box with a filename
         private void FillCardFilenames()
         {
-            string[] cards = { "4h", "5h", "6h", "7h", "8h", "9h", "th", "jh", "qh", "kh", "4c", "5c", "6c", "7c", "8c", "9c", "tc", "jc", "qc", "kc" };
-            
-            //shuffle card_face array
-            string[] shuffled_cards = ShuffleCards(cards);            
+            string[] faces = { "a", "2", "3", "4", "5", "6", "7", "j", "q", "k", "a", "2", "3", "4", "5", "6", "7", "j", "q", "k" };
+            string[] suits = {"c", "d", "h", "s"};
+            int i = 1;
 
-                for (int i = 0; i < 20; i++)
-                {
-                    // Console.WriteLine(i+shuffled_faces[i]+ shuffled_suits[s]);//debug
-                    //Console.ReadLine();
-                    SetCardFilename(i+1, "card" + shuffled_cards[i]  + ".jpg");
-                }            
+            //shuffle card_face array
+            string[] shuffled = ShuffleCards(faces);
+            string[] shuffled_suits = ShuffleCards(suits);
+
+
+            for (int f = 0; f <= 19; f++)
+                    {
+                int s = 1;
+                        SetCardFilename(i, "card" + shuffled[f] + shuffled_suits[s] + ".jpg");
+                    i++;
+                    }
+                
+         
 
 
         }
@@ -197,8 +202,9 @@ namespace Memory
              *      to make sure that the cards are loaded successfully and that
              *      they're shuffled.  If you get all 2s, something is wrong.
             */
-            //LoadAllCardBacks();
-            
+            LoadAllCardBacks();
+            FillCardFilenames();
+
         }
 
         private void card_Click(object sender, EventArgs e)
@@ -247,11 +253,6 @@ namespace Memory
         }
         #endregion
 
-        private void start_Game(object sender, EventArgs e)
-        {
-            FillCardFilenames();
-            //ShowAllCards();
-            
-        }
+       
     }
 }

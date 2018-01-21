@@ -76,31 +76,18 @@ namespace Memory
         // This method fills each picture box with a filename
         private void FillCardFilenames()
         {
-            string[] card_face = { "a", "2", "3", "4", "5", "6", "7", "8", "9", "t", "j", "q", "k" };
-            string[] card_suit = { "h", "d", "s", "c" };
+            string[] cards = { "4h", "5h", "6h", "7h", "8h", "9h", "th", "jh", "qh", "kh", "4c", "5c", "6c", "7c", "8c", "9c", "tc", "jc", "qc", "kc" };
+            
             //shuffle card_face array
-            string[] shuffled_faces = ShuffleCards(card_face);
-            string[] shuffled_suits = ShuffleCards(card_suit);
-            for (int s = 0; s < 3; s++)
-            {
+            string[] shuffled_cards = ShuffleCards(cards);            
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 20; i++)
                 {
                     // Console.WriteLine(i+shuffled_faces[i]+ shuffled_suits[s]);//debug
                     //Console.ReadLine();
-                    SetCardFilename(i+1, "card" + shuffled_faces[i] + shuffled_suits[s] + ".jpg");
-                }
-            }
-            for (int s = 2; s < 4; s++)
-            {
+                    SetCardFilename(i+1, "card" + shuffled_cards[i]  + ".jpg");
+                }            
 
-                for (int i = 4; i < 10; i++)
-                {
-                    // Console.WriteLine(i+shuffled_faces[i] + shuffled_suits[s]);//debug
-                    // Console.ReadLine();
-                    SetCardFilename(i+1, "card" + shuffled_faces[i] + shuffled_suits[s] + ".jpg");
-                }
-            }
 
         }
 

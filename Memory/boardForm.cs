@@ -76,33 +76,46 @@ namespace Memory
         // This method fills each picture box with a filename
         private void FillCardFilenames()
         {
-            string[] values = { "a", "2", "3", "4", "5", "6", "7", "j", "q", "k" }; 
-            string[] card_values_copy = ShuffleCards(values);
-            string[] suits = { "c", "d", "h", "s" };
-            // call ShuffleCards, sending values array           
-            int i = 1;
-
-            for (int suit = 0; suit <= 3; suit++) 
+            string[] card_face = { "a", "2", "3", "4", "5", "6", "7", "8", "9", "t", "j", "q", "k" };
+            string[] card_suit = { "h", "d", "s", "c" };
+            //shuffle card_face array
+            string[] shuffled_faces = ShuffleCards(card_face);
+            string[] shuffled_suits = ShuffleCards(card_suit);
+            for (int s = 0; s < 3; s++)
             {
-                for (int value = 0; value <= 4; value++)
-                    {                
-                    SetCardFilename(i, "card" + card_values_copy[value] + suits[suit] + ".jpg");
-                    i++;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    // Console.WriteLine(i+shuffled_faces[i]+ shuffled_suits[s]);//debug
+                    //Console.ReadLine();
+                    SetCardFilename(i+1, "card" + shuffled_faces[i] + shuffled_suits[s] + ".jpg");
                 }
             }
+            for (int s = 2; s < 4; s++)
+            {
+
+                for (int i = 4; i < 10; i++)
+                {
+                    // Console.WriteLine(i+shuffled_faces[i] + shuffled_suits[s]);//debug
+                    // Console.ReadLine();
+                    SetCardFilename(i+1, "card" + shuffled_faces[i] + shuffled_suits[s] + ".jpg");
+                }
+            }
+
         }
 
         // TODO:  students should write this one
         static string[] ShuffleCards(string[] array) //how do you write so you call only once? See ArrayTests.cs
         {
-            Random rnd = new Random();
+            Random rnd = new Random(); //random generator
             string[] MyRandomValues = array.OrderBy(x => rnd.Next()).ToArray();
-            foreach (var card_value in MyRandomValues)
+            /*foreach (var card_value in MyRandomValues)
             {
                 Console.WriteLine(card_value);
                 Console.ReadLine();
-            }
+            }*/
             return MyRandomValues;
+
         }
 
         // This method loads (shows) an image in a picture box.  Assumes that filenames

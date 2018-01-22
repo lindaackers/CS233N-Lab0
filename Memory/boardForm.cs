@@ -67,9 +67,17 @@ namespace Memory
         }
 
         // TODO:  students should write this one
-        private bool IsMatch(int index1, int index2)
+        private bool IsMatch(string index1, string index2)
         {
-            return true;
+            MessageBox.Show("index 1: " + index1 + " | index 2:" + index2);
+            if (index1 == index2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // This method fills each picture box with a filename
@@ -90,8 +98,7 @@ namespace Memory
                         SetCardFilename(i, "card" + shuffled[f] + shuffled_suits[s] + ".jpg");
                     i++;
                     }
-                
-         
+                     
 
 
         }
@@ -209,9 +216,37 @@ namespace Memory
 
         private void card_Click(object sender, EventArgs e)
         {
+            string firstCardValue = "";
+            string secondCardValue = "";
             PictureBox card = (PictureBox)sender;
             int cardNumber = int.Parse(card.Name.Substring(4));
             ShowCard(cardNumber);
+            
+            //MessageBox.Show(GetCardValue(cardNumber));
+            if (firstCardNumber == -1)
+            {
+                firstCardValue = GetCardValue(cardNumber);
+                MessageBox.Show("first card: " + firstCardValue);
+                firstCardNumber = 1;
+            }
+           else
+            {
+                secondCardValue = GetCardValue(cardNumber);
+                MessageBox.Show("second card: " + secondCardValue);
+                MessageBox.Show("first card: " + firstCardValue);
+                if (IsMatch(firstCardValue, secondCardValue))
+                {
+                    matches = matches + 1;
+                    MessageBox.Show("is a match");              
+                }
+                firstCardNumber = NOT_PICKED_YET;
+                secondCardNumber = NOT_PICKED_YET;
+
+
+
+            }       
+
+
 
             /* 
              * if the first card isn't picked yet
